@@ -1,44 +1,65 @@
-import express from "express";
+import express, { Request } from "express";
 
-const pokedex = require("../seeds/pokemon.json");
+const mockPokemon = require("../seeds/pokemon.json");
+const mongoose = require("mongoose");
+const PokemmonModel = require("../models/pokemon");
 
-const index = (req: express.Request, res: express.Response) => {
-  res.status(200).json(pokedex);
+mongoose.connect("mongodb://localhost:27017/node-api-101", {
+  useNewUrlParser: true,
+});
+
+const index = async (req: express.Request, res: express.Response) => {
+  const data = await PokemmonModel.find({});
+  res.status(200).send(data);
 };
-const getById = (req: express.Request, res: express.Response) => {
-  res
-    .status(200)
-    .json(
-      pokedex.cards.find((pokemonId: any) => pokemonId.id === req.params.id)
-    );
+
+const getById = async (req: express.Request, res: express.Response) => {
+  const { id } = req.params;
+  const data = await PokemmonModel.findById(id);
+  res.status(200).json(data);
 };
-const store = (req: express.Request, res: express.Response) => {
-  pokedex.cards.push(req.body);
-  res.status(200).json(req.body);
+
+const store = async (req: express.Request, res: express.Response) => {
+  const data = new PokemmonModel(req.body);
+  await data.save();
+  res.status(200).json(data);
 };
-const updateById = (req: express.Request, res: express.Response) => {
-  const updateIndex = pokedex.cards.findIndex(
-    (pokemonId: any) => pokemonId.id === req.params.id
-  );
-  switch (updateIndex) {
-    case 0:
-      res.json(Object.assign(pokedex.cards[updateIndex], req.body));
-    case undefined:
-      res.send(`${req.params.id} not found`);
-    default:
-      res.send(`${req.params.id} not found`);
+
+const updateById = async (req: express.Request, res: express.Response) => {
+  const { id } = req.params;
+  const data = await PokemmonModel.findByIdAndUpdate(id, {
+    $set: req.body,
+  });
+  res.status(200).json(data);
+};
+
+const deleteById = async (req: express.Request, res: express.Response) => {
+  const { id } = req.params;
+  await PokemmonModel.findByIdAndDelete(id);
+  res.status(204).end();
+};
+
+const storePokemonData = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  for (let i = 0; i < mockPokemon.cards.length; i++) {
+    const data = new PokemmonModel({
+      cards: {
+        id: mockPokemon.cards[i].id,
+        details: mockPokemon.cards[i],
+      },
+    });
+    await data.save();
   }
-};
-const deleteById = (req: express.Request, res: express.Response) => {
-  const deletedIndex: Number = pokedex.cards.findIndex(
-    (pokemonId: any) => pokemonId.id === req.params.id
-  );
-  if (deletedIndex >= 0) {
-    pokedex.cards.splice(deletedIndex, 1);
-    res.status(200).send("Deleted");
-  } else {
-    res.status(200).send("Not found");
-  }
+  res.status(200).send("Done");
 };
 
-module.exports = { index, getById, store, updateById, deleteById };
+module.exports = {
+  index,
+  getById,
+  store,
+  updateById,
+  deleteById,
+  storePokemonData,
+};

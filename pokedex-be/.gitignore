@@ -17,8 +17,7 @@ database/*.sqlite
 .idea
 
 #database
-mysql
-mariadb
+mongo-volume
 
 #docker-compose
-docker-compose.yml%
+docker-compose.yml
