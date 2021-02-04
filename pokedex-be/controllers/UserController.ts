@@ -19,7 +19,7 @@ const index = async (req: express.Request, res: express.Response) => {
     JSON.parse(JSON.stringify(response))
   );
 
-  const information = await SetInfomation({ data, pokemon }, 1);
+  const information = await SetInformation({ data, pokemon }, 1);
   res.status(200).send(information);
 };
 
@@ -32,20 +32,7 @@ const getById = async (req: express.Request, res: express.Response) => {
     const pokemon = await PokemonModel.find({}).then((response: any) =>
       JSON.parse(JSON.stringify(response))
     );
-    // const setData = {
-    //   id: data._id,
-    //   username: data.username,
-    //   password: data.password,
-    //   pokemons: pokemon.filter((pokemonId: any) => {
-    //     for (let i = 0; i < data.pokemon_id.length; i++) {
-    //       if (pokemonId.cards.id === data.pokemon_id[i]) {
-    //         return pokemonId.cards.details;
-    //       }
-    //     }
-    //   }),
-    // };
-    // res.status(200).send(setData);
-    const information = await SetInfomation({ data, pokemon }, 2);
+    const information = await SetInformation({ data, pokemon }, 2);
     res.status(200).send(information);
   } catch (e) {
     res.status(404).send(`${id} not found`);
