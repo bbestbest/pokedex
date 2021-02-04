@@ -4,6 +4,7 @@ import express, { response } from "express";
 const mongoose = require("mongoose");
 const UserModel = require("../models/user");
 const PokemonModel = require("../models/pokemon");
+const SetInformation = require("../utils/SetInfomation");
 
 mongoose.connect("mongodb://localhost:27017/node-api-101", {
   useNewUrlParser: true,
@@ -13,27 +14,13 @@ const index = async (req: express.Request, res: express.Response) => {
   const data = await UserModel.find({}).then((response: any) =>
     JSON.parse(JSON.stringify(response))
   );
+
   const pokemon = await PokemonModel.find({}).then((response: any) =>
     JSON.parse(JSON.stringify(response))
   );
 
-  let tempData;
-  const setData = data.map(
-    (item: any, index: any) =>
-      (tempData = {
-        id: data[index]._id,
-        username: data[index].username,
-        password: data[index].password,
-        pokemons: pokemon.filter((pokemonId: any) => {
-          for (let i = 0; i < item.pokemon_id.length; i++) {
-            if (pokemonId.cards.id === item.pokemon_id[i]) {
-              return pokemonId.cards.details;
-            }
-          }
-        }),
-      })
-  );
-  res.status(200).send(setData);
+  const information = await SetInfomation({ data, pokemon }, 1);
+  res.status(200).send(information);
 };
 
 const getById = async (req: express.Request, res: express.Response) => {
@@ -45,20 +32,21 @@ const getById = async (req: express.Request, res: express.Response) => {
     const pokemon = await PokemonModel.find({}).then((response: any) =>
       JSON.parse(JSON.stringify(response))
     );
-
-    const setData = {
-      id: data._id,
-      username: data.username,
-      password: data.password,
-      pokemons: pokemon.filter((pokemonId: any) => {
-        for (let i = 0; i < data.pokemon_id.length; i++) {
-          if (pokemonId.cards.id === data.pokemon_id[i]) {
-            return pokemonId.cards.details;
-          }
-        }
-      }),
-    };
-    res.status(200).send(setData);
+    // const setData = {
+    //   id: data._id,
+    //   username: data.username,
+    //   password: data.password,
+    //   pokemons: pokemon.filter((pokemonId: any) => {
+    //     for (let i = 0; i < data.pokemon_id.length; i++) {
+    //       if (pokemonId.cards.id === data.pokemon_id[i]) {
+    //         return pokemonId.cards.details;
+    //       }
+    //     }
+    //   }),
+    // };
+    // res.status(200).send(setData);
+    const information = await SetInfomation({ data, pokemon }, 2);
+    res.status(200).send(information);
   } catch (e) {
     res.status(404).send(`${id} not found`);
   }
