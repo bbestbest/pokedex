@@ -20,22 +20,7 @@ function Login() {
     console.log("password: " + password);
     if (event.keyCode == 13) {
       alert("Redirect to pokedexes");
-
-      const configs = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      };
-      fetch("http://127.0.0.1:8000/login", configs).then((response) =>
-        response.json()
-      );
-
-      // await GetLogin("login", { username: username, password: password });
+      await GetLogin("login", { username: username, password: password });
       history.push("/pokedexes");
     }
   };

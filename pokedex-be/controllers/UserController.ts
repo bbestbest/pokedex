@@ -75,6 +75,7 @@ const deleteById = async (req: express.Request, res: express.Response) => {
 };
 const login = async (req: express.Request, res: express.Response) => {
   const { username, password } = req.body;
+  console.log(username, password);
 
   if (username !== undefined && password !== undefined) {
     const data = await LoginFunc({ UserModel }, { username, password }, bcrypt);
