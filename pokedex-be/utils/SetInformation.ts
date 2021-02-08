@@ -20,7 +20,7 @@ module.exports = async function SetInfomation(
             }),
           })
       );
-      return information;
+      return setData;
     case 2:
       information = {
         id: attributes.data._id,
@@ -34,6 +34,6 @@ module.exports = async function SetInfomation(
           }
         }),
       };
-      return information;
+      return setData;
   }
 };
