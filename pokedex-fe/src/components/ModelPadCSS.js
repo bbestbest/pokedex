@@ -30,3 +30,9 @@ export const InputFrom = styled.input`
   height: 2rem;
   margin-bottom: 1rem;
 `;
+
+export const ItemBlock = styled.div`
+  padding : 0px;
+  border-width : 0px;
+  border-style : none;
+`
