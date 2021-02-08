@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 
 const app = express();
 const pokemon = require("./routes/pokemon");
@@ -11,3 +11,58 @@ app.use("", pokemon);
 app.use("", user);
 
 app.listen(PORT, () => {});
+
+//index.js
+/* import library ที่จำเป็นทั้งหมด */
+// import express from "express";
+
+// const app = express();
+// const bodyParser = require("body-parser");
+// const jwt = require("jwt-simple");
+// const passport = require("passport");
+// //ใช้ในการ decode jwt ออกมา
+// const ExtractJwt = require("passport-jwt").ExtractJwt;
+// //ใช้ในการประกาศ Strategy
+// const JwtStrategy = require("passport-jwt").Strategy;
+// const SECRET = "MY_SECRET_KEY";
+
+// //สร้าง Strategy
+// const jwtOptions = {
+//   jwtFromRequest: ExtractJwt.fromHeader("authorization"),
+//   secretOrKey: SECRET,
+// };
+
+// const jwtAuth = new JwtStrategy(jwtOptions, (payload: any, done: any) => {
+//   if (payload.sub === "kennaruk") done(null, true);
+//   else done(null, false);
+// });
+
+// //เสียบ Strategy เข้า Passport
+// app.use(express.json());
+// passport.use(jwtAuth);
+
+// //ทำ Passport Middleware
+// const requireJWTAuth = passport.authenticate("jwt", { session: false });
+
+// //เสียบ middleware ยืนยันตัวตน JWT เข้าไป
+// app.get("/", requireJWTAuth, (req, res) => {
+//   res.send("ยอดเงินคงเหลือ 50");
+// });
+
+// //ทำ Middleware สำหรับขอ JWT
+// const loginMiddleWare = (
+//   req: express.Request,
+//   res: express.Response,
+//   next: any
+// ) => {
+//   if (req.body.username === "kennaruk" && req.body.password === "mak") next();
+//   else res.send("Wrong username and password");
+// };
+// app.post("/login", loginMiddleWare, (req, res) => {
+//   const payload = {
+//     sub: req.body.username,
+//     iat: new Date().getTime(),
+//   };
+//   res.send(jwt.encode(payload, SECRET));
+// });
+// app.listen(3000);
