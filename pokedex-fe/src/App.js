@@ -1,10 +1,19 @@
-import React from 'react'
-import UserStatus from './components/UserStatus'
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Routes from "./configs/Routes";
 
 function App() {
   return (
     <div className="App">
-      <UserStatus></UserStatus>
+      <Router>
+        <Suspense fallback="...loading">
+          <Switch>
+            {Object.keys(Routes).map((routeKey) => (
+              <Route Key={routeKey} {...Routes[routeKey]} />
+            ))}
+          </Switch>
+        </Suspense>
+      </Router>
     </div>
   );
 }

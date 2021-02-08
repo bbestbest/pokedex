@@ -14,4 +14,4 @@ function ModelIpad() {
     
 }
 
-export default ModelIpad
+export default ModelIpad;

@@ -1,14 +1,8 @@
-import React from 'react'
-import ModelIpad from './ModelIpad'
+import React from "react";
+import ModelIpad from "./ModelIpad";
 
-function UserStatus() {
-
-    return (
-        <ModelIpad>
-            
-        </ModelIpad>
-    )
-
+function UserStatus({ children }) {
+  return <ModelIpad>{children}</ModelIpad>;
 }
 
-export default UserStatus
+export default UserStatus;
