@@ -76,14 +76,16 @@ const deleteById = async (req: express.Request, res: express.Response) => {
 const login = async (req: express.Request, res: express.Response) => {
   const { username, password } = req.body;
 
-  const data = await LoginFunc({ UserModel }, { username, password }, bcrypt);
-
-  switch (data) {
-    case data:
-      return res.status(200).send({ token: data.token });
-    case null:
-      return res.status(403).send("Username or Password is incorrect");
+  if (username !== undefined && password !== undefined) {
+    const data = await LoginFunc({ UserModel }, { username, password }, bcrypt);
+    switch (data) {
+      case data:
+        return res.status(200).send({ token: data.token });
+      case null:
+        return res.status(403).send("Username or Password is incorrect");
+    }
   }
+  return res.status(403).send("Username or Password is incorrect");
 };
 
 module.exports = { index, getById, store, updateById, deleteById, login };
