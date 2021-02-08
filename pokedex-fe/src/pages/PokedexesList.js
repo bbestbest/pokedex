@@ -4,7 +4,11 @@ import UserStatus from "../components/UserStatus";
 
 function PokedexesList() {
   const { id } = useParams();
-  return <UserStatus>PokedexesList = {id}</UserStatus>;
+  return (
+    <>
+      <UserStatus>PokedexesList = {id}</UserStatus>
+    </>
+  );
 }
 
 export default PokedexesList;
