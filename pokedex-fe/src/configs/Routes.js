@@ -21,4 +21,9 @@ export default {
     exact: true,
     component: lazy(() => import("../pages/PokedexesList")),
   },
+  SignUp: {
+    path: "/signup",
+    exact: true,
+    component: lazy(() => import("../pages/SignUp")),
+  },
 };

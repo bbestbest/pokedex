@@ -7,10 +7,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 `;
-export const ItemPad = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const Ipad = styled.div`
   width: 60vw;
   height: 70vh;
   border-style: solid;
@@ -20,6 +17,24 @@ export const ItemPad = styled.div`
   border-bottom-width: 1em;
   border-radius: 1em;
   flex-direction: column;
+`;
+
+export const UserStatus = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-item: center;
+  width: auto;
+  height: 80%;
+  margin: 3em 3em 3em 3em;
+`;
+
+export const UserList = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 80%;
+  margin: 3em 3em 3em 3em;
 `;
 export const InputFrom = styled.input`
   display: flex;
@@ -32,7 +47,7 @@ export const InputFrom = styled.input`
 `;
 
 export const ItemBlock = styled.div`
-  padding : 0px;
-  border-width : 0px;
-  border-style : none;
-`
+  padding: 0px;
+  border-width: 0px;
+  border-style: none;
+`;

@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { GetData } from "../services/FetchData";
-import UserStatus from "../components/UserStatus";
+import UserList from "../components/UserPokedexList";
 
 function Pokedexes() {
   const [users, setUsers] = useState([]);
+
   useEffect(async () => {
     setUsers(await GetData("user"));
   });
 
   return (
     <>
-      <UserStatus>
+      <UserList>
+        <h1>Pokedexes</h1>
         {users.map((userItem, userIndex) => (
-          <div key={userIndex}>{userItem.username}</div>
+          <Link key={userIndex} to={`/pokedexes/${userIndex + 1}`}>
+            {userItem.username}
+          </Link>
         ))}
-      </UserStatus>
+      </UserList>
     </>
   );
 }
