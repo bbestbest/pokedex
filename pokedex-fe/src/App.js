@@ -1,9 +1,10 @@
 import React from 'react'
+import UserStatus from './components/UserStatus'
 
 function App() {
   return (
     <div className="App">
-      Hello BB
+      <UserStatus></UserStatus>
     </div>
   );
 }
