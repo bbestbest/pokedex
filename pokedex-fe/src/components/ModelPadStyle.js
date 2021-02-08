@@ -7,10 +7,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 `;
-export const ItemPad = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const Ipad = styled.div`
   width: 60vw;
   height: 70vh;
   border-style: solid;
@@ -22,35 +19,23 @@ export const ItemPad = styled.div`
   flex-direction: column;
 `;
 
-export const ItemPadContent = styled(ItemPad)`
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-left: 2em;
-`
-
-export const BoxData = styled.div`
+export const UserStatus = styled.div`
   display: flex;
-  width: 90%;
-  height: 60%;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: row;
-`
-
-export const BoxTextPokemon = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
   flex-direction: column;
-`
+  justify-content: center;
+  align-item: center;
+  width: auto;
+  height: 80%;
+  margin: 3em 3em 3em 3em;
+`;
 
-export const BoxImage = styled.div`
-  width: 40%;
-  height: 100%;
-  background-image: url(${(props) => props.image}) ;
-  background-repeat: no-repeat;
-`
-
+export const UserList = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 80%;
+  margin: 3em 3em 3em 3em;
+`;
 export const InputFrom = styled.input`
   display: flex;
   border-radius: 0.5rem;
