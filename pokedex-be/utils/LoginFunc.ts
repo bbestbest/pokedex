@@ -9,7 +9,6 @@ module.exports = async function LoginFunc(
   const user = await model.UserModel.find({
     username: request.username,
   }).then((response: any) => response[0]);
-  console.log(user);
 
   if (user !== undefined) {
     const salt = bcrypt.genSaltSync(12);
