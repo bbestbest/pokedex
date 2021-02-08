@@ -1,4 +1,5 @@
 import express from "express";
+const cors = require("cors");
 
 const app = express();
 const pokemon = require("./routes/pokemon");
@@ -6,6 +7,12 @@ const user = require("./routes/user");
 const PORT = 8000;
 
 app.use(express.json());
+app.use(cors());
+
+// var corsOptions = {
+//   origin: "localhost",
+//   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 
 app.use("", pokemon);
 app.use("", user);

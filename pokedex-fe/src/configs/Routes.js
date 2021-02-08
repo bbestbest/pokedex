@@ -6,6 +6,11 @@ export default {
     exact: true,
     component: lazy(() => import("../pages/Login")),
   },
+  Pokemons: {
+    path: "/pokemons/:pokedexId",
+    exact: true,
+    component: lazy(() => import("../pages/Pokemons")),
+  },
   Pokedexes: {
     path: "/pokedexes",
     exact: true,

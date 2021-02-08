@@ -4,7 +4,7 @@ const mockPokemon = require("../seeds/pokemon.json");
 const mongoose = require("mongoose");
 const PokemonModel = require("../models/pokemon");
 
-mongoose.connect(process.env.CONNECTION_URL, {
+mongoose.connect("mongodb://localhost:27017/node-api-101", {
   useNewUrlParser: true,
 });
 

@@ -2,13 +2,13 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import UserStatus from "../components/UserStatus";
 
-function PokedexesList() {
-  const { id } = useParams();
+function Pokemons() {
+  const { pokedexId } = useParams();
   return (
     <>
-      <UserStatus>PokedexesList = {id}</UserStatus>
+      <UserStatus>Pokedex ID = {pokedexId}</UserStatus>
     </>
   );
 }
 
-export default PokedexesList;
+export default Pokemons;

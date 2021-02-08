@@ -1,17 +1,12 @@
-import React from 'react'
-import { Container, ItemPad, InputFrom } from './ModelPadCSS'
+import React from "react";
+import { Container, ItemPad, InputFrom } from "./ModelPadStyle";
 
-function ModelIpad() {
-
-    return (
-        <Container>
-            <ItemPad>
-                <InputFrom></InputFrom>
-                <InputFrom></InputFrom>
-            </ItemPad>
-        </Container>
-    )
-    
+function ModelIpad({ children }) {
+  return (
+    <Container>
+      <ItemPad>{children}</ItemPad>
+    </Container>
+  );
 }
 
 export default ModelIpad;
