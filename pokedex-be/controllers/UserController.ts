@@ -6,7 +6,7 @@ const UserModel = require("../models/user");
 const PokemonModel = require("../models/pokemon");
 const SetInformation = require("../utils/SetInformation");
 
-mongoose.connect("mongodb://localhost:27017/node-api-101", {
+mongoose.connect(process.env.CONNECTION_URL, {
   useNewUrlParser: true,
 });
 
