@@ -44,10 +44,19 @@ export const InputFrom = styled.input`
   width: 15rem;
   height: 2rem;
   margin-bottom: 1rem;
-`;
+`
 
 export const ItemBlock = styled.div`
-  padding: 0px;
-  border-width: 0px;
-  border-style: none;
-`;
+  padding : 0px;
+  border-width : 0px;
+  border-style : none;
+`
+
+export const SearchFrom = styled.input`
+  border-radius: 0.5rem;
+  border-style: solid;
+  border-width: 2px;
+  width: 30rem;
+  height: 2rem;
+  margin-bottom: 1rem;
+`
