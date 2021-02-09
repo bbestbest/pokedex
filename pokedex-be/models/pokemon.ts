@@ -6,13 +6,14 @@ const Schema = mongoose.Schema;
 const pokemonSchema: any = new Schema({
   cards: {
     type: Object,
-    require: true,
+    required: true,
     id: {
       type: String,
-      require: true,
+      required: true,
+      unique: true,
       details: {
         type: Object,
-        require: true,
+        required: true,
       },
     },
   },

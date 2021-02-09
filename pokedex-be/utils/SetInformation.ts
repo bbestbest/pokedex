@@ -34,6 +34,6 @@ module.exports = async function SetInfomation(
           }
         }),
       };
-      return setData;
+      return information;
   }
 };
