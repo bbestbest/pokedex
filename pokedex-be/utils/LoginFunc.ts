@@ -6,11 +6,15 @@ module.exports = async function LoginFunc(
   bcrypt: any
 ) {
   let token: String;
-  const user = await model.UserModel.find({
+  const user = await model.UserModel.findOne({
     username: request.username,
-  }).then((response: any) => response[0]);
+  }).then((response: any) => response);
 
-  if (user !== undefined) {
+  if (
+    user !== undefined &&
+    request.password !== undefined &&
+    request.password !== null
+  ) {
     const salt = bcrypt.genSaltSync(12);
     switch (bcrypt.compareSync(request.password, user.password)) {
       case true:

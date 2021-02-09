@@ -34,7 +34,9 @@ const getById = async (req: express.Request, res: express.Response) => {
     const pokemon = await PokemonModel.find({}).then((response: any) =>
       JSON.parse(JSON.stringify(response))
     );
+
     const information = await SetInformation({ data, pokemon }, 2);
+
     return res.status(200).send(information);
   } catch (e) {
     return res.status(404).send(`${id} not found`);
@@ -75,14 +77,12 @@ const deleteById = async (req: express.Request, res: express.Response) => {
 };
 const login = async (req: express.Request, res: express.Response) => {
   const { username, password } = req.body;
-  console.log(username, password);
 
   if (username !== undefined && password !== undefined) {
     const data = await LoginFunc({ UserModel }, { username, password }, bcrypt);
     switch (data.status) {
       case "pass":
-        console.log("check check");
-        return res.status(200).send({ token: data.token });
+        return res.status(200).send(data.token);
       case "error":
         return res.status(403).send("Username or Password is incorrect");
     }
