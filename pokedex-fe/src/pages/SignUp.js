@@ -6,7 +6,7 @@ import { Container, ItemPad, InputFrom } from "../components/ModelPadStyle";
 function SignUp() {
   const history = useHistory();
   const handleOnEnter = (event) => {
-    if (event.keyCode == 13) {
+    if (event.keyCode === 13) {
       alert("Redirect to Login");
       history.push("/login");
     }
