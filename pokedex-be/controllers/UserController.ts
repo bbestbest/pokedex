@@ -79,10 +79,11 @@ const login = async (req: express.Request, res: express.Response) => {
 
   if (username !== undefined && password !== undefined) {
     const data = await LoginFunc({ UserModel }, { username, password }, bcrypt);
-    switch (data) {
-      case data:
+    switch (data.status) {
+      case "pass":
+        console.log("check check");
         return res.status(200).send({ token: data.token });
-      case null:
+      case "error":
         return res.status(403).send("Username or Password is incorrect");
     }
   }
