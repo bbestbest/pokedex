@@ -60,3 +60,26 @@ export const SearchFrom = styled.input`
   height: 2rem;
   margin-bottom: 1rem;
 `
+
+export const BoxData = styled.div`
+  display: flex;
+  width: 90%;
+  height: 60%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+`
+
+export const BoxTextPokemon = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+`
+
+export const BoxImage = styled.div`
+  width: 40%;
+  height: 100%;
+  background-image: url(${(props) => props.image}) ;
+  background-repeat: no-repeat;
+`
