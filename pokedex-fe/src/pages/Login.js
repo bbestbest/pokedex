@@ -21,7 +21,7 @@ function Login(props) {
   };
 
   const handleOnEnter = async (event) => {
-    if (event.keyCode == 13) {
+    if (event.keyCode === 13) {
       try {
         const token = await GetLogin("login", {
           username: username,
@@ -29,7 +29,6 @@ function Login(props) {
         });
         props.dispatch(login({ username: username, token }));
         alert("Redirect to pokedexes");
-        // props.dispatch(storeUser);
         history.push("/pokedexes");
       } catch (error) {
         console.log(error);

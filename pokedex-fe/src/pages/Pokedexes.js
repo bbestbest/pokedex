@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { GetData } from "../services/FetchData";
 import UserList from "../components/UserPokedexList";
+import { connect } from "react-redux"
 
-function Pokedexes() {
+function Pokedexes(props) {
   const [users, setUsers] = useState([]);
-
-  useEffect(async () => {
-    setUsers(await GetData("user"));
-  });
+  useMemo(() => {
+    GetData("user").then((response) => setUsers(response));
+    console.log(props.state)
+  },[props,setUsers]);
 
   return (
     <>
@@ -24,4 +25,8 @@ function Pokedexes() {
   );
 }
 
-export default Pokedexes;
+const mapState = (state) => {
+  return {state: state}
+}
+
+export default connect(mapState)(Pokedexes);
