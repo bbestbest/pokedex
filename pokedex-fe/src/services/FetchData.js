@@ -6,7 +6,7 @@ const JSON_HEADER = { "Content-Type": "application/json" };
 export async function GetData(route) {
   return await axios({
     method: "GET",
-    headers: { "Access-Control-Allow-Origin": true },
+    headers: JSON_HEADER,
     url: `${API_ENDPOINT}/${route}`,
-  }).then((response) => response.data);
+  }).then((response) => response.json());
 }
