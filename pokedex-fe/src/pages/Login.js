@@ -4,7 +4,7 @@ import UserStatus from "../components/UserStatus";
 import { Container, ItemPad, InputFrom } from "../components/ModelPadStyle";
 import { GetLogin } from "../services/FetchData";
 
-function Login() {
+function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
@@ -16,12 +16,14 @@ function Login() {
     setPassword(event.target.value);
   };
   const handleOnEnter = async (event) => {
-    console.log("username: " + username);
-    console.log("password: " + password);
     if (event.keyCode == 13) {
-      alert("Redirect to pokedexes");
-      await GetLogin("login", { username: username, password: password });
-      history.push("/pokedexes");
+      try {
+        await GetLogin("login", { username: username, password: password });
+        alert("Redirect to pokedexes");
+        history.push("/pokedexes");
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
