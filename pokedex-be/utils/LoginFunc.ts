@@ -12,7 +12,12 @@ module.exports = async function LoginFunc(
   switch (bcrypt.compareSync(request.password, user.password)) {
     case true:
       token = createToken(user);
-      return { status: "pass", token: token };
+      return {
+        status: "pass",
+        _id: user._id,
+        username: user.username,
+        token: token,
+      };
     case false:
       return { status: "error", token: undefined };
   }
