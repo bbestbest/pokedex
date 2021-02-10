@@ -17,7 +17,7 @@ export default {
     component: lazy(() => import("../pages/Pokedexes")),
   },
   PokedexesList: {
-    path: "/pokedexes/:id",
+    path: "/pokedexesList/:id",
     exact: true,
     component: lazy(() => import("../pages/PokedexesList")),
   },
