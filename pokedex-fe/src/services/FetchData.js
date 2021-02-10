@@ -37,3 +37,14 @@ export async function PostRegister(path, request) {
     }),
   }).then((response) => response.data);
 }
+
+export async function UpdatePokemons(path, request) {
+  return await axios({
+    method: "PATCH",
+    url: `${API_ENDPOINT}/${path}/${request._id}`,
+    headers: JSON_HEADER,
+    data: JSON.stringify({
+      "pokemon_id": request.pokemon_id
+    }),
+  }).then((response) => response.data);
+}
