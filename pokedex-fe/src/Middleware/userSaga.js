@@ -8,9 +8,7 @@ export function* loginUser(action) {
   yield put({
     type: "LOADED_USER",
     value: {
-      _id: userData._id,
-      username: action.value.username,
-      token: userData,
+      userData,
     },
   });
 }

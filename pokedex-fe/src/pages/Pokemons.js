@@ -20,6 +20,7 @@ function Pokemons(props) {
           atk={() => item.cards.details.attacks[0].damage}
           hp={item.cards.details.hp}
           res={0}
+          button={'Click'}
         ></Addpokemon>;
       })}
     </>

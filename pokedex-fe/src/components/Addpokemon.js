@@ -16,6 +16,7 @@ function AddPokemon(props, { children }) {
         <div>{props.atk}</div>
         <div>{props.hp}</div>
         <div>{props.res}</div>
+        {props.button ? <button onClick={props.button}>ADD Pokemon</button> : null}
       </BoxTextPokemon>
     </BoxData>
   );
