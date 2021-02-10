@@ -1,8 +1,22 @@
+import { act } from "react-dom/test-utils";
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
-import { GetLogin } from "../services/FetchData";
+import { status } from "../Reducer/UserAction";
+import { GetLogin, PostRegister } from "../services/FetchData";
 
-export function* loadUser(action) {
-  console.log("This is saga dude");
+export function* loginUser(action) {
   console.log(action);
-  yield put({ type: "DogeUser", value: action.value });
+  const userData = yield GetLogin("login", action.value);
+  yield put({
+    type: "LOADED_USER",
+    value: { username: action.value.username, token: userData },
+  });
+}
+
+export function* registerUser(action) {
+  console.log(action.value);
+  const userData = yield PostRegister("user", action.value);
+  yield put({
+    type: "LOADED_USER",
+    value: { username: action.value.username, token: userData },
+  });
 }

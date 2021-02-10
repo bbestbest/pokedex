@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useMemo } from "react";
+import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import UserStatus from "../components/UserStatus";
 
-function PokedexesList() {
-  const { id } = useParams();
-
+function PokedexesList(props) {
+  useMemo(() => {
+    console.log(props);
+  });
   return (
     <>
-      <UserStatus>PokedexesList = {id}</UserStatus>
+      <UserStatus>PokedexesList</UserStatus>
     </>
   );
 }
 
-export default PokedexesList;
+const mapStateToProps = (state) => {
+  return { state: state };
+};
+
+export default connect(mapStateToProps)(PokedexesList);
