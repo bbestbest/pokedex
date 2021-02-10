@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { register } from "../Reducer/UserAction";
 
 import UserStatus from "../components/UserStatus";
-import { Container, ItemPad, InputFrom } from "../components/ModelPadStyle";
+import { Button, InputForm } from "../components/ModelPadStyle";
 
 function SignUp(props) {
   const [username, setUsername] = useState("");
@@ -19,14 +19,22 @@ function SignUp(props) {
     setPassword(event.target.value);
   };
 
+  const handleOnSignUp = () => {
+    try {
+      register({ username, password }, props);
+      history.push("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleOnClick = () => {
+    handleOnSignUp();
+  };
+
   const handleOnEnter = (event) => {
     if (event.keyCode === 13) {
-      try {
-        register({ username, password }, props);
-        history.push("/login");
-      } catch (error) {
-        console.log(error);
-      }
+      handleOnSignUp();
     }
   };
 
@@ -36,19 +44,22 @@ function SignUp(props) {
         <form onKeyDown={handleOnEnter}>
           <h1>Create Pokemon Trainer Account</h1>
           <h3>Username</h3>
-          <InputFrom
+          <InputForm
+            placeholder="username . . ."
             type="text"
             id="username"
             name="username"
             onChange={handleUsernameOnChange}
-          ></InputFrom>
+          ></InputForm>
           <h3>Password</h3>
-          <InputFrom
+          <InputForm
+            placeholder="username . . ."
             type="password"
             id="password"
             name="password"
             onChange={handlePasswordOnChange}
-          ></InputFrom>
+          ></InputForm>
+          <Button onClick={handleOnClick}>Sign Up</Button>
           <Link to={`/login`}>Already have an account?</Link>
         </form>
       </UserStatus>
