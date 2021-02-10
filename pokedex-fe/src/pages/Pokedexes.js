@@ -20,7 +20,7 @@ function Pokedexes(props) {
         <h1>Pokedexes</h1>
         {props.state?.map((propItem, propIndex) => (
           <RedBackground key={propIndex}>
-            <Link to={`/pokedexes/${propIndex + 1}`}>{propItem.username}</Link>
+            <Link to={`/pokedexesList/${propIndex + 1}`}>{propItem.username}</Link>
           </RedBackground>
         ))}
       </UserList>
