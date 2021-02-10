@@ -32,9 +32,9 @@ export const userList = (value, props) => {
   });
 };
 
-export const addUserPoke = (props,pokeUser) => {
+export const addUserPoke = (props,pokeId) => {
   props.dispatch({
-    type: "ADD_USER_LIST",
-    pokeUser: pokeUser,
+    type: "ADD_USER_LIST_SAGA",
+    pokemon_id: pokeId,
   });
 }

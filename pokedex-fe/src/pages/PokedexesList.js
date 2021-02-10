@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import Addpokemon from "../components/Addpokemon";
+import { checkUserList } from '../Reducer/UserAction'
 
 function PokedexesList(props) {
+  React.useEffect(() => {checkUserList(props) },[])
+  console.log('Lopp')
   const { id } = useParams();
-  console.log(props.dataUser)
   return (
     <>
       <div>PokedexesList #{id}</div>
-      {props.dataUserList[id - 1]?.username === props.dataUser.username ? (
+      {props.dataUserList[id - 1]?.username === props.dataUser ? (
         <Link to={`/pokemons/${id}`}>AddPokemon</Link>
       ) : null}
       {props.dataUserList[id - 1]?.pokemons.map((item, index) => {
@@ -33,7 +35,7 @@ function PokedexesList(props) {
 const mapStateToProps = (state) => {
   return {
     dataUserList: state.UserListReducer.value,
-    dataUser: state.UserReducer.value.userData,
+    dataUser: state.UserReducer.username,
   };
 };
 
