@@ -9,7 +9,7 @@ function App() {
         <Suspense fallback="...loading">
           <Switch>
             {Object.keys(Routes).map((routeKey) => (
-              <Route Key={routeKey} {...Routes[routeKey]} />
+              <Route key={routeKey} {...Routes[routeKey]} />
             ))}
           </Switch>
         </Suspense>
