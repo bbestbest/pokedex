@@ -31,3 +31,10 @@ export const userList = (value, props) => {
     value: value.users,
   });
 };
+
+export const addUserPoke = (props,pokeUser) => {
+  props.dispatch({
+    type: "ADD_USER_LIST",
+    pokeUser: pokeUser,
+  });
+}
