@@ -1,15 +1,15 @@
-import React, { useMemo } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
-import UserStatus from "../components/UserStatus";
+import ModelIpad from "../components/ModelIpad";
 
 function PokedexesList(props) {
-  useMemo(() => {
-    console.log(props);
-  });
+  const { id } = useParams();
   return (
     <>
-      <UserStatus>PokedexesList</UserStatus>
+        <div>PokedexesList #{id}</div>
+        <Link to={`/pokemons/${id}`}>AddPokemon</Link>
     </>
   );
 }

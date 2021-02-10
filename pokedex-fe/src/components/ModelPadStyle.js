@@ -23,7 +23,7 @@ export const UserStatus = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-item: center;
+  align-items: center;
   width: auto;
   height: 80%;
   margin: 3em 3em 3em 3em;
