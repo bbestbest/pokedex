@@ -96,7 +96,9 @@ const login = async (req: express.Request, res: express.Response) => {
   const data = await LoginFunc({ UserModel }, { username, password }, bcrypt);
   switch (data.status) {
     case "pass":
-      return res.status(200).send({ _id: data._id, token: data.token });
+      return res
+        .status(200)
+        .send({ _id: data._id, username: data.username, token: data.token });
     case "error":
       return res.status(403).send("Username or Password is incorrect");
   }
