@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Addpokemon from "../components/Addpokemon";
 import { connect } from "react-redux";
 import { loadPokedexList } from '../Reducer/PokedexAction'
+import { addUserPoke } from '../Reducer/UserAction'
 
 function Pokemons(props) {
   const { pokedexId } = useParams();
@@ -20,7 +21,7 @@ function Pokemons(props) {
           atk={() => item.cards.details.attacks[0].damage}
           hp={item.cards.details.hp}
           res={0}
-          button={'Click'}
+          button={() => addUserPoke(props,item.cards.id)}
         ></Addpokemon>;
       })}
     </>

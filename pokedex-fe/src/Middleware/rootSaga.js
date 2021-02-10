@@ -1,5 +1,5 @@
 import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
-import { loginUser, registerUser } from "../Middleware/userSaga";
+import { loginUser, registerUser, addPokemons } from "../Middleware/userSaga";
 import { userList } from "../Middleware/usersListSaga";
 import { fetchPokemon } from "../Middleware/pokemonSaga";
 
@@ -19,6 +19,9 @@ function* watchPokemonList() {
   yield takeEvery("LOADING_ISLOADING", fetchPokemon);
 }
 
+function* watchAddPokemon() {
+  yield takeEvery("ADD_USER_LIST_SAGA", addPokemons)
+}
 
 export default function* rootSaga() {
   yield all([
@@ -26,5 +29,6 @@ export default function* rootSaga() {
     watchRegisterUser(),
     watchLoadUserList(),
     watchPokemonList(),
+    watchAddPokemon()
   ]);
 }
