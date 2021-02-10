@@ -71,8 +71,6 @@ const updateById = async (req: express.Request, res: express.Response) => {
   const { username, password, pokemon_id } = req.body;
 
   const data = await UserModel.findByIdAndUpdate(id, {
-    username: username,
-    password: password,
     pokemon_id: pokemon_id,
   });
   return res.status(200).json(data);

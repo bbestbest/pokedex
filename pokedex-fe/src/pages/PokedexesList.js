@@ -2,26 +2,39 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
-import { loadPokedexList } from '../Reducer/PokedexAction'
+import Addpokemon from "../components/Addpokemon";
 
 function PokedexesList(props) {
   const { id } = useParams();
-  if (props.messagePoke === undefined ) {
-    loadPokedexList(props)
-  }
   console.log(props.dataUser)
-  console.log(props.dataPokemon)
   return (
     <>
       <div>PokedexesList #{id}</div>
-      <Link to={`/pokemons/${id}`}>AddPokemon</Link>
-      {props.dataUser?.pokemons?.map((items,index) => props.dataPokemon.filter((item) => item.cards.id === items) )}
+      {props.dataUserList[id - 1]?.username === props.dataUser.username ? (
+        <Link to={`/pokemons/${id}`}>AddPokemon</Link>
+      ) : null}
+      {props.dataUserList[id - 1]?.pokemons.map((item, index) => {
+        return (
+          <Addpokemon
+            key={index}
+            image={item.cards.details.imageUrl}
+            name={item.cards.details.name}
+            type={item.cards.details.type}
+            atk={() => item.cards.details.attacks[0].damage}
+            hp={item.cards.details.hp}
+            res={0}
+          ></Addpokemon>
+        );
+      })}
     </>
   );
 }
 
 const mapStateToProps = (state) => {
-  return { dataUser: state.UserListReducer.value, dataPokemon: state.PokedexReducer.pokeList, messagePoke: state.PokedexReducer.message };
+  return {
+    dataUserList: state.UserListReducer.value,
+    dataUser: state.UserReducer.value,
+  };
 };
 
 export default connect(mapStateToProps)(PokedexesList);

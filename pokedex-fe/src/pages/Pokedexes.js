@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { TextBackground } from "../components/ModelPadStyle";
 
 function Pokedexes(props) {
-  console.log(props.state)
   return (
     <>
       <UserList>
