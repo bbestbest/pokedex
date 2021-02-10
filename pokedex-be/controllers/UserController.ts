@@ -68,12 +68,12 @@ const store = async (req: express.Request, res: express.Response) => {
 
 const updateById = async (req: express.Request, res: express.Response) => {
   const { id } = req.params;
-  const { username, password, pokemon_id } = req.body;
+  const { pokemon_id } = req.body;
 
   const data = await UserModel.findByIdAndUpdate(id, {
-    username: username,
-    password: password,
-    pokemon_id: pokemon_id,
+    $set: {
+      pokemon_id: pokemon_id,
+    },
   });
   return res.status(200).json(data);
 };
@@ -94,9 +94,12 @@ const login = async (req: express.Request, res: express.Response) => {
   const data = await LoginFunc({ UserModel }, { username, password }, bcrypt);
   switch (data.status) {
     case "pass":
-      return res
-        .status(200)
-        .send({ _id: data._id, username: data.username, token: data.token });
+      return res.status(200).send({
+        _id: data._id,
+        username: data.username,
+        token: data.token,
+        pokemon_id: data.pokemon_id,
+      });
     case "error":
       return res.status(403).send("Username or Password is incorrect");
   }
