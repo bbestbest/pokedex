@@ -8,7 +8,7 @@ import {
   // BoxTextPokemon,
 } from "./ModelPadStyle";
 
-function Addpokemon(props, { children }) {
+function AddPokemon(props, { children }) {
   return (
     <Container>
       {/* <ItemPadContent> */}
@@ -29,4 +29,4 @@ function Addpokemon(props, { children }) {
   );
 }
 
-export default Addpokemon;
+export default AddPokemon;
