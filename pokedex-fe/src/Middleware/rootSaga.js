@@ -10,16 +10,10 @@ function* watchRegisterUser() {
   yield takeEvery("REGISTER", registerUser);
 }
 
-function* watchLoadUser() {
-  yield takeEvery("LOADED_USER", () => {
-    console.log("Login La dude");
-  });
-}
-
 function* watchLoadUserList() {
   yield takeEvery("CHECK_USER_LIST", userList);
 }
 
 export default function* rootSaga() {
-  yield all([watchLoginUser(), watchRegisterUser(), watchLoadUser()]);
+  yield all([watchLoginUser(), watchRegisterUser(), watchLoadUserList()]);
 }

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-// import { GetData } from "../services/FetchData";
 import { checkUserList } from "../Reducer/UserAction";
 import UserList from "../components/UserPokedexList";
 import { connect } from "react-redux";
@@ -15,15 +14,13 @@ const RedBackground = styled.div`
 `;
 
 function Pokedexes(props) {
-  const [users, setUsers] = useState([]);
-
   return (
     <>
       <UserList>
         <h1>Pokedexes</h1>
-        {users.map((userItem, userIndex) => (
-          <RedBackground key={userIndex}>
-            <Link to={`/pokedexes/${userIndex + 1}`}>{userItem.username}</Link>
+        {props.state?.map((propItem, propIndex) => (
+          <RedBackground key={propIndex}>
+            <Link to={`/pokedexes/${propIndex + 1}`}>{propItem.username}</Link>
           </RedBackground>
         ))}
       </UserList>
@@ -32,7 +29,7 @@ function Pokedexes(props) {
 }
 
 const mapState = (state) => {
-  return { state: state };
+  return { state: state.UserListReducer.value };
 };
 
 export default connect(mapState)(Pokedexes);

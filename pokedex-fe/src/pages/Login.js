@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { login } from "../Reducer/UserAction";
+import { checkUserList, login } from "../Reducer/UserAction";
 
 import UserStatus from "../components/UserStatus";
 import { Container, ItemPad, InputFrom } from "../components/ModelPadStyle";
+
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +23,7 @@ function Login(props) {
     if (event.keyCode === 13) {
       try {
         login({ username, password }, props);
+        checkUserList(props);
         history.push("/pokedexes");
       } catch (error) {
         console.log(error);

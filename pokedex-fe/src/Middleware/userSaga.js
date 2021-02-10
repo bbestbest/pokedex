@@ -4,7 +4,6 @@ import { status } from "../Reducer/UserAction";
 import { GetLogin, PostRegister } from "../services/FetchData";
 
 export function* loginUser(action) {
-  console.log(action);
   const userData = yield GetLogin("login", action.value);
   yield put({
     type: "LOADED_USER",
@@ -13,7 +12,6 @@ export function* loginUser(action) {
 }
 
 export function* registerUser(action) {
-  console.log(action.value);
   const userData = yield PostRegister("user", action.value);
   yield put({
     type: "LOADED_USER",

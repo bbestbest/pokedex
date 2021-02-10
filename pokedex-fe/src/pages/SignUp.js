@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { register } from "../Reducer/UserAction";
 
 import UserStatus from "../components/UserStatus";
@@ -9,6 +9,7 @@ import { Container, ItemPad, InputFrom } from "../components/ModelPadStyle";
 function SignUp(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const handleUsernameOnChange = (event) => {
     setUsername(event.target.value);
@@ -22,6 +23,7 @@ function SignUp(props) {
     if (event.keyCode === 13) {
       try {
         register({ username, password }, props);
+        history.push("/login");
       } catch (error) {
         console.log(error);
       }
