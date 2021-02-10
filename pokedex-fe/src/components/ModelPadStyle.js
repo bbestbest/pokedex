@@ -78,8 +78,8 @@ export const BoxTextPokemon = styled.div`
 `
 
 export const BoxImage = styled.div`
-  width: 40%;
-  height: 100%;
-  background-image: url(${(props) => props.image}) ;
+  width: 15.5em;
+  height: 21.5em;
+  background-image: url(${props => props.image});
   background-repeat: no-repeat;
 `
