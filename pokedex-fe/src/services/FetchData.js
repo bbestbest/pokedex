@@ -11,7 +11,7 @@ export async function GetData(path) {
     method: "GET",
     headers: JSON_HEADER,
     url: `${API_ENDPOINT}/${path}`,
-  }).then((response) => response.json());
+  }).then((response) => response.data);
 }
 
 export async function GetLogin(path, request) {

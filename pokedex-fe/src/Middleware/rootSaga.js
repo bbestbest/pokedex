@@ -1,6 +1,10 @@
 import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
-import { testsu } from "../Middleware/userSaga";
+import { fetchUserData } from "../Middleware/userSaga";
+
+function* userSaga() {
+  yield takeEvery({ type: "CHECK_USER" }, fetchUserData);
+}
 
 export default function* rootSaga() {
-  yield all([testsu()]);
+  yield all([userSaga()]);
 }
