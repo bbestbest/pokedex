@@ -6,5 +6,5 @@ import UserListReducer from "./UserListReducer";
 export default combineReducers({
   UserReducer,
   PokedexReducer,
-  UserListReducer
+  UserListReducer,
 });

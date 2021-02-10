@@ -14,6 +14,7 @@ const RedBackground = styled.div`
 `;
 
 function Pokedexes(props) {
+  console.log(props.state)
   return (
     <>
       <UserList>

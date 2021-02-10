@@ -19,6 +19,7 @@ function* watchPokemonList() {
   yield takeEvery("LOADING_ISLOADING", fetchPokemon);
 }
 
+
 export default function* rootSaga() {
   yield all([
     watchLoginUser(),
