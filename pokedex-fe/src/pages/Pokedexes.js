@@ -1,24 +1,30 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { GetData } from "../services/FetchData";
+// import { GetData } from "../services/FetchData";
+import { checkUserList } from "../Reducer/UserAction";
 import UserList from "../components/UserPokedexList";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import styled from "styled-components";
+
+const RedBackground = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+  border-radius: 5rem;
+  margin: 0.5em 0;
+`;
 
 function Pokedexes(props) {
   const [users, setUsers] = useState([]);
-  useMemo(() => {
-    GetData("user").then((response) => setUsers(response));
-    console.log(props.state)
-  },[props,setUsers]);
 
   return (
     <>
       <UserList>
         <h1>Pokedexes</h1>
         {users.map((userItem, userIndex) => (
-          <Link key={userIndex} to={`/pokedexes/${userIndex + 1}`}>
-            {userItem.username}
-          </Link>
+          <RedBackground key={userIndex}>
+            <Link to={`/pokedexes/${userIndex + 1}`}>{userItem.username}</Link>
+          </RedBackground>
         ))}
       </UserList>
     </>
@@ -26,7 +32,7 @@ function Pokedexes(props) {
 }
 
 const mapState = (state) => {
-  return {state: state}
-}
+  return { state: state };
+};
 
 export default connect(mapState)(Pokedexes);

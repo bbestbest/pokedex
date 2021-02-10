@@ -25,3 +25,15 @@ export async function GetLogin(path, request) {
     }),
   }).then((response) => response.data);
 }
+
+export async function PostRegister(path, request) {
+  return await axios({
+    method: "POST",
+    url: `${API_ENDPOINT}/${path}`,
+    headers: JSON_HEADER,
+    data: JSON.stringify({
+      username: request.username,
+      password: request.password,
+    }),
+  }).then((response) => response.data);
+}

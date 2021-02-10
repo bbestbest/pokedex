@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { GetLogin } from "../services/FetchData";
 import { login } from "../Reducer/UserAction";
 
 import UserStatus from "../components/UserStatus";
 import { Container, ItemPad, InputFrom } from "../components/ModelPadStyle";
-
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -20,15 +18,10 @@ function Login(props) {
     setPassword(event.target.value);
   };
 
-  const handleOnEnter = async (event) => {
+  const handleOnEnter = (event) => {
     if (event.keyCode === 13) {
       try {
-        const token = await GetLogin("login", {
-          username: username,
-          password: password,
-        });
-        props.dispatch(login({ username: username, token }));
-        alert("Redirect to pokedexes");
+        login({ username, password }, props);
         history.push("/pokedexes");
       } catch (error) {
         console.log(error);

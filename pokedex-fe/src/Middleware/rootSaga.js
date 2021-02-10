@@ -1,12 +1,24 @@
 import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
-import { loadUser } from "../Middleware/userSaga";
+import { loginUser, registerUser } from "../Middleware/userSaga";
+import { userList } from "../Middleware/usersListSaga";
 import { fetchPokemon } from "../Middleware/pokemonSaga"
 
-function* watchLoadUser() {
-  yield takeEvery("LOADED_USER", loadUser);
+function* watchLoginUser() {
+  yield takeEvery("CHECK_USER", loginUser);
 }
-function* watchDoge() {
-  yield takeEvery("DogeUser", () => console.log("Doge"));
+
+function* watchRegisterUser() {
+  yield takeEvery("REGISTER", registerUser);
+}
+
+function* watchLoadUser() {
+  yield takeEvery("LOADED_USER", () => {
+    console.log("Login La dude");
+  });
+}
+
+function* watchLoadUserList() {
+  yield takeEvery("CHECK_USER_LIST", userList);
 }
 
 function* watchPokemonList() {
@@ -14,5 +26,5 @@ function* watchPokemonList() {
 }
 
 export default function* rootSaga() {
-  yield all([watchLoadUser(),watchDoge(),watchPokemonList()]);
+  yield all([watchLoadUser(),watchPokemonList()]);
 }
