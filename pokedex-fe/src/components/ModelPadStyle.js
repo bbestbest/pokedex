@@ -30,6 +30,7 @@ export const UserStatus = styled.div`
   width: 80%;
   height: 80%;
   margin: 5%;
+  margin-left: 10%;
 `;
 
 export const UserList = styled.div`
