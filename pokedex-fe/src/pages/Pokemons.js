@@ -1,33 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Addpokemon from "../components/Addpokemon";
-import { GetData } from "../services/FetchData";
+import { connect } from "react-redux";
+import { loadPokedexList } from '../Reducer/PokedexAction'
 
-function Pokemons() {
-  const [state, SetState] = useState();
-  useEffect(
-    () =>
-      GetData("pokemon").then((response) => SetState(response)),
-    []
-  );
-  console.log(state);
+function Pokemons(props) {
   const { pokedexId } = useParams();
+  if (props.message === undefined) {
+    loadPokedexList(props)
+  }
   return (
     <>
-      {state?.map((item) => {
-        <Addpokemon
-          key={item}
-          idParams={pokedexId}
+    {console.log(props.data)}
+      {props.data?.map((item,index) => {
+        return <Addpokemon
+          key={index}
           image={item.cards.details.imageUrl}
           name={item.cards.details.name}
           type={item.cards.details.type}
-          atk={item.cards.details.attacks[0].damage}
+          atk={() => item.cards.details.attacks[0].damage}
           hp={item.cards.details.hp}
           res={0}
-        >{item.cards.details.name}</Addpokemon>;
+        ></Addpokemon>;
       })}
     </>
   );
 }
+const mapStateToProps = (state) => {
+  return { data: state.PokedexReducer.pokeList,
+          message: state.PokedexReducer.message };
+};
 
-export default Pokemons;
+export default connect(mapStateToProps)(Pokemons);
