@@ -51,6 +51,10 @@ const store = async (req: express.Request, res: express.Response) => {
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
+  const checkUniqueUser = await UserModel.findOne({ username: username });
+  if (checkUniqueUser) {
+    return res.status(422).json({ errors: "User already exist" });
+  }
 
   const salt = bcrypt.genSaltSync(12);
   const hashedPassword = bcrypt.hashSync(password, salt);
