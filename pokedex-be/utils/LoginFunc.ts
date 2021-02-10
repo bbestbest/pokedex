@@ -15,7 +15,6 @@ module.exports = async function LoginFunc(
     request.password !== undefined &&
     request.password !== null
   ) {
-    const salt = bcrypt.genSaltSync(12);
     switch (bcrypt.compareSync(request.password, user.password)) {
       case true:
         token = createToken(user);

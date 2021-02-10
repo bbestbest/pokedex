@@ -1,5 +1,6 @@
 import express, { response } from "express";
 
+const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const UserModel = require("../models/user");
@@ -45,6 +46,11 @@ const getById = async (req: express.Request, res: express.Response) => {
 
 const store = async (req: express.Request, res: express.Response) => {
   const { username, password } = req.body;
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
 
   const salt = bcrypt.genSaltSync(12);
   const hashedPassword = bcrypt.hashSync(password, salt);
