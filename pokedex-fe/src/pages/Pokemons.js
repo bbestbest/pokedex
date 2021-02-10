@@ -11,7 +11,6 @@ function Pokemons(props) {
   }
   return (
     <>
-    {console.log(props.data)}
       {props.data?.map((item,index) => {
         return <Addpokemon
           key={index}
