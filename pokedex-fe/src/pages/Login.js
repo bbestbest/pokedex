@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { checkUserList, login } from "../Reducer/UserAction";
 
 import UserStatus from "../components/UserStatus";
-import { Container, ItemPad, InputFrom } from "../components/ModelPadStyle";
+import { InputForm, Button } from "../components/ModelPadStyle";
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -19,15 +19,23 @@ function Login(props) {
     setPassword(event.target.value);
   };
 
+  const handleOnLogin = () => {
+    try {
+      login({ username, password }, props);
+      checkUserList(props);
+      history.push("/pokedexes");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleOnClick = () => {
+    handleOnLogin();
+  };
+
   const handleOnEnter = (event) => {
     if (event.keyCode === 13) {
-      try {
-        login({ username, password }, props);
-        checkUserList(props);
-        history.push("/pokedexes");
-      } catch (error) {
-        console.log(error);
-      }
+      handleOnLogin();
     }
   };
 
@@ -37,19 +45,22 @@ function Login(props) {
         <form onKeyDown={handleOnEnter}>
           <h1>Sign In to Pokemon Trainer Account</h1>
           <h3>Username</h3>
-          <InputFrom
+          <InputForm
+            placeholder="username . . ."
             type="text"
             id="username"
             name="username"
             onChange={handleUsernameOnChange}
-          ></InputFrom>
+          ></InputForm>
           <h3>Password</h3>
-          <InputFrom
+          <InputForm
+            placeholder="username . . ."
             type="password"
             id="password"
             name="password"
             onChange={handlePasswordOnChange}
-          ></InputFrom>
+          ></InputForm>
+          <Button onClick={handleOnClick}>Sign In</Button>
           <Link to={`/signup`}>Don't have an account?</Link>
         </form>
       </UserStatus>

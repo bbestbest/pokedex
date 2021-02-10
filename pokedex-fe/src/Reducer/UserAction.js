@@ -15,7 +15,7 @@ export const login = (value, props) => {
 export const status = (value, props) => {
   props.dispatch({
     type: "LOADED_USER",
-    value: { username: value.username, token: value.token },
+    value: { _id: value._id, username: value.username, token: value.token },
   });
 };
 

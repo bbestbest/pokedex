@@ -51,6 +51,10 @@ const store = async (req: express.Request, res: express.Response) => {
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
+  const checkUniqueUser = await UserModel.findOne({ username: username });
+  if (checkUniqueUser) {
+    return res.status(422).json({ errors: "User already exist" });
+  }
 
   const salt = bcrypt.genSaltSync(12);
   const hashedPassword = bcrypt.hashSync(password, salt);
@@ -67,11 +71,9 @@ const updateById = async (req: express.Request, res: express.Response) => {
   const { username, password, pokemon_id } = req.body;
 
   const data = await UserModel.findByIdAndUpdate(id, {
-    $set: {
-      username: username,
-      password: password,
-      pokemon_id: pokemon_id,
-    },
+    username: username,
+    password: password,
+    pokemon_id: pokemon_id,
   });
   return res.status(200).json(data);
 };
@@ -84,16 +86,20 @@ const deleteById = async (req: express.Request, res: express.Response) => {
 const login = async (req: express.Request, res: express.Response) => {
   const { username, password } = req.body;
 
-  if (username !== undefined && password !== undefined) {
-    const data = await LoginFunc({ UserModel }, { username, password }, bcrypt);
-    switch (data.status) {
-      case "pass":
-        return res.status(200).send(data.token);
-      case "error":
-        return res.status(403).send("Username or Password is incorrect");
-    }
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
   }
-  return res.status(403).send("Username or Password is incorrect");
+
+  const data = await LoginFunc({ UserModel }, { username, password }, bcrypt);
+  switch (data.status) {
+    case "pass":
+      return res
+        .status(200)
+        .send({ _id: data._id, username: data.username, token: data.token });
+    case "error":
+      return res.status(403).send("Username or Password is incorrect");
+  }
 };
 
 module.exports = { index, getById, store, updateById, deleteById, login };

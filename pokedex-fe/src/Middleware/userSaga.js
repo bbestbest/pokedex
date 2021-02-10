@@ -7,7 +7,11 @@ export function* loginUser(action) {
   const userData = yield GetLogin("login", action.value);
   yield put({
     type: "LOADED_USER",
-    value: { username: action.value.username, token: userData },
+    value: {
+      _id: userData._id,
+      username: action.value.username,
+      token: userData,
+    },
   });
 }
 
