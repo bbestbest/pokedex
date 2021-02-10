@@ -6,7 +6,7 @@ import {
 
 } from "./ModelPadStyle";
 
-function Addpokemon(props, { children }) {
+function AddPokemon(props, { children }) {
   return (
     <BoxData>
       <BoxImage image={props.image} />
@@ -21,4 +21,4 @@ function Addpokemon(props, { children }) {
   );
 }
 
-export default Addpokemon;
+export default AddPokemon;

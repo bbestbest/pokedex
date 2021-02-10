@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { createStore, applyMiddleware, compose} from "redux";
 import { Provider } from "react-redux";
-import createSagaMiddleware, { delay } from "redux-saga";
+import createSagaMiddleware from "redux-saga";
 import Reducer from "./Reducer/index";
 import rootSaga from "./Middleware/rootSaga";
 

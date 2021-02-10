@@ -3,10 +3,10 @@ import { loadUser } from "../Middleware/userSaga";
 import { fetchPokemon } from "../Middleware/pokemonSaga"
 
 function* watchLoadUser() {
-  yield takeEvery('LOADED_USER',loadUser)
+  yield takeEvery("LOADED_USER", loadUser);
 }
 function* watchDoge() {
-  yield takeEvery('DogeUser', () => console.log('Doge'))
+  yield takeEvery("DogeUser", () => console.log("Doge"));
 }
 
 function* watchPokemonList() {
