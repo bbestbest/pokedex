@@ -1,7 +1,8 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { GetLogin } from "../services/FetchData";
 
-export function* fetchUserData(action) {
+export function* loadUser(action) {
+  console.log("This is saga dude");
   console.log(action);
-  yield put({ type: "LOADED_USER", payload: action.payload });
+  yield put({ type: "DogeUser", value: action.value });
 }

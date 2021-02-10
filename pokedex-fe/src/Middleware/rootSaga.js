@@ -1,10 +1,13 @@
 import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
-import { fetchUserData } from "../Middleware/userSaga";
+import { loadUser } from "../Middleware/userSaga";
 
-function* userSaga() {
-  yield takeEvery({ type: "CHECK_USER" }, fetchUserData);
+function* watchLoadUser() {
+  yield takeEvery("LOADED_USER", loadUser);
+}
+function* watchDoge() {
+  yield takeEvery("DogeUser", () => console.log("Doge"));
 }
 
 export default function* rootSaga() {
-  yield all([userSaga()]);
+  yield all([watchLoadUser(), watchDoge()]);
 }
