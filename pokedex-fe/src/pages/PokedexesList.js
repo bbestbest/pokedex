@@ -33,7 +33,7 @@ function PokedexesList(props) {
 const mapStateToProps = (state) => {
   return {
     dataUserList: state.UserListReducer.value,
-    dataUser: state.UserReducer.value,
+    dataUser: state.UserReducer.value.userData,
   };
 };
 
