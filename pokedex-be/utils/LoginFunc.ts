@@ -17,6 +17,7 @@ module.exports = async function LoginFunc(
         _id: user._id,
         username: user.username,
         token: token,
+        pokemon_id: user.pokemon_id,
       };
     case false:
       return { status: "error", token: undefined };
