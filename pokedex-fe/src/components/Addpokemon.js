@@ -11,11 +11,11 @@ function AddPokemon(props, { children }) {
     <BoxData>
       <BoxImage src={props.image} />
       <BoxTextPokemon>
-        <div>{props.name}</div>
-        <div>{props.type}</div>
-        <div>{props.atk}</div>
-        <div>{props.hp}</div>
-        <div>{props.res}</div>
+        <h2>{props.name}</h2>
+        <h3> Type :{props.type}</h3>
+        <h3>ATK :{props.atk}</h3>
+        <h3>HP :{props.hp}</h3>
+        <h3>RES :{props.res}</h3>
         {props.button ? <button onClick={props.button}>ADD Pokemon</button> : null}
       </BoxTextPokemon>
     </BoxData>

@@ -86,7 +86,7 @@ export const SearchForm = styled.input`
 
 export const BoxData = styled.div`
   display: flex;
-  width: 100%;
+  width: 95%;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: row;
