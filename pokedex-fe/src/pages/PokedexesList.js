@@ -9,7 +9,6 @@ function PokedexesList(props) {
   React.useEffect(() => {
     checkUserList(props);
   }, []);
-  console.log("Lopp");
   const { id } = useParams();
 
   return (
