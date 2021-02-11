@@ -15,7 +15,7 @@ function Pokedexes(props) {
 
   return (
     <>
-      <UserList>
+      <UserList center={'center'}>
         <h1>Pokedexes</h1>
         {props.state?.map((propItem, propIndex) => (
           <TextBackground key={propIndex}>

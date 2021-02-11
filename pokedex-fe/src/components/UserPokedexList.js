@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, UserList, Ipad } from "./ModelPadStyle";
 
-function UserPokedexList({ children }) {
+function UserPokedexList({center, children }) {
   return (
     <Container>
-      <Ipad>
+      <Ipad center={center}>
         <UserList>{children}</UserList>
       </Ipad>
     </Container>
