@@ -19,6 +19,8 @@ export const Ipad = styled.div`
   border-bottom-width: 1.5em;
   border-radius: 1em;
   flex-direction: column;
+  display:flex;
+  align-items: ${props => props.center === 'center' ? 'none' : 'center'};
 `;
 
 export const UserStatusStyle = styled.div`
@@ -42,6 +44,16 @@ export const UserList = styled.div`
   overflow: auto;
   color: #ff0105;
 `;
+
+export const PokemonList = styled.div`
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: auto;
+  width: 90%;
+  height: 100%;
+`
 
 export const InputForm = styled.input`
   display: flex;
@@ -74,25 +86,25 @@ export const SearchFrom = styled.input`
 
 export const BoxData = styled.div`
   display: flex;
-  width: 90%;
-  height: 60%;
+  width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: row;
+  margin-bottom: 2em;
+  padding: 2%;
+  background-color: rgb(238, 238, 238);
+  border-radius: 10px;
 `;
 
 export const BoxTextPokemon = styled.div`
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
   flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
 `;
 
-export const BoxImage = styled.div`
-  width: 15.5em;
-  height: 21.5em;
-  background-image: url(${(props) => props.image});
-  background-repeat: no-repeat;
+export const BoxImage = styled.img`
+  margin-right: 2rem;
 `;
 
 export const Button = styled.button`
