@@ -41,7 +41,7 @@ export const UserList = styled.div`
   width: auto;
   height: 80%;
   margin: 5%;
-  overflow: auto;
+  overflow: hidden;
   color: #ff0105;
 `;
 
@@ -50,7 +50,7 @@ export const PokemonList = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow: auto;
+  overflow: hidden;
   width: 90%;
   height: 100%;
 `
