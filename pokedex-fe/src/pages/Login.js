@@ -47,27 +47,27 @@ function Login(props) {
   return (
     <>
       <UserStatus>
-        {/* <form onKeyDown={handleOnEnter}> */}
-        <h1>Sign In to Pokemon Trainer Account</h1>
-        <h3>Username</h3>
-        <InputForm
-          placeholder="username . . ."
-          type="text"
-          id="username"
-          name="username"
-          onChange={handleUsernameOnChange}
-        ></InputForm>
-        <h3>Password</h3>
-        <InputForm
-          placeholder="username . . ."
-          type="password"
-          id="password"
-          name="password"
-          onChange={handlePasswordOnChange}
-        ></InputForm>
-        <Button onClick={handleOnClick}>Sign In</Button>
-        <Link to={`/signup`}>Don't have an account?</Link>
-        {/* </form> */}
+        <form onKeyDown={handleOnEnter}>
+          <h1>Sign In to Pokemon Trainer Account</h1>
+          <h3>Username</h3>
+          <InputForm
+            placeholder="username . . ."
+            type="text"
+            id="username"
+            name="username"
+            onChange={handleUsernameOnChange}
+          ></InputForm>
+          <h3>Password</h3>
+          <InputForm
+            placeholder="username . . ."
+            type="password"
+            id="password"
+            name="password"
+            onChange={handlePasswordOnChange}
+          ></InputForm>
+          <Button onClick={handleOnClick}>Sign In</Button>
+          <Link to={`/signup`}>Don't have an account?</Link>
+        </form>
       </UserStatus>
     </>
   );
