@@ -1,4 +1,4 @@
-import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { all, takeEvery} from "redux-saga/effects";
 import { loginUser, registerUser, addPokemons } from "../Middleware/userSaga";
 import { userList } from "../Middleware/usersListSaga";
 import { fetchPokemon } from "../Middleware/pokemonSaga";

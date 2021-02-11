@@ -1,4 +1,4 @@
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { put } from "redux-saga/effects";
 import { GetData } from "../services/FetchData"
 
 export function* fetchPokemon() {

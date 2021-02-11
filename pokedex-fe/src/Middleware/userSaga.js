@@ -1,6 +1,4 @@
-import { act } from "react-dom/test-utils";
-import { call, put, takeEvery, takeLatest, select } from "redux-saga/effects";
-import { status } from "../Reducer/UserAction";
+import { put, select } from "redux-saga/effects";
 import { GetLogin, PostRegister, UpdatePokemons } from "../services/FetchData";
 
 export const getStateUser = (state) => state.UserReducer;
@@ -17,7 +15,7 @@ export function* loginUser(action) {
 }
 
 export function* registerUser(action) {
-  const userData = yield PostRegister("user", action.value);
+  yield PostRegister("user", action.value);
   yield put({
     type: "REGISTERED",
     value: { username: action.value.username },
