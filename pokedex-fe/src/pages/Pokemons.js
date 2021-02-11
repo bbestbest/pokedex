@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import Addpokemon from "../components/Addpokemon";
 import { connect } from "react-redux";
 import { loadPokedexList } from '../Reducer/PokedexAction'
@@ -11,6 +11,7 @@ function Pokemons(props) {
   const { pokedexId } = useParams();
   const [search, setSearch] = useState({ value: "" });
   const [filterSearch, setFilterSearch] = useState([]);
+  const history = useHistory();
 
   if (props.message === undefined) {
     loadPokedexList(props);
@@ -34,6 +35,7 @@ function Pokemons(props) {
 
   return (
     <ModelIpad>
+      <h3 onClick={() => history.push(`/pokedexesList/${pokedexId}`)}>Back</h3>
       <h2> Pokedex Add Pokemon #{pokedexId}</h2>
       <SearchForm onChange={handleOnSearchChange} />
       {!search.value && filterSearch.length >= 0
@@ -44,7 +46,7 @@ function Pokemons(props) {
                 image={item.cards.details.imageUrl}
                 name={item.cards.details.name}
                 type={item.cards.details.type}
-                atk={() => item.cards.details.attacks[0].damage}
+                atk={item.cards.details.attacks !== undefined ? item.cards.details.attacks[0].damage : 0}
                 hp={item.cards.details.hp}
                 res={0}
                 button={() => addUserPoke(props, item.cards.id)}
@@ -60,7 +62,7 @@ function Pokemons(props) {
                   image={item.cards.details.imageUrl}
                   name={item.cards.details.name}
                   type={item.cards.details.type}
-                  atk={() => item.cards.details.attacks[0].damage}
+                  atk={item.cards.details.attacks !== undefined ? item.cards.details.attacks[0].damage : 0}
                   hp={item.cards.details.hp}
                   res={0}
                   button={() => addUserPoke(props, item.cards.id)}
