@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import Addpokemon from "../components/Addpokemon";
 import { checkUserList } from "../Reducer/UserAction";
+import ModelIpad from '../components/ModelIpad'
 
 function PokedexesList(props) {
   React.useEffect(() => {
@@ -13,7 +14,7 @@ function PokedexesList(props) {
   const { id } = useParams();
 
   return (
-    <>
+    <ModelIpad>
       <div>PokedexesList #{id}</div>
       {props.dataUserList !== undefined &&
       props.dataUserList[id - 1]?.username === props.dataUser ? (
@@ -34,7 +35,7 @@ function PokedexesList(props) {
             );
           })
         : null}
-    </>
+    </ModelIpad>
   );
 }
 

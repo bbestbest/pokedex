@@ -4,6 +4,7 @@ import Addpokemon from "../components/Addpokemon";
 import { connect } from "react-redux";
 import { loadPokedexList } from '../Reducer/PokedexAction'
 import { addUserPoke } from '../Reducer/UserAction'
+import ModelIpad from '../components/ModelIpad'
 
 function Pokemons(props) {
   const { pokedexId } = useParams();
@@ -11,7 +12,8 @@ function Pokemons(props) {
     loadPokedexList(props)
   }
   return (
-    <>
+    <ModelIpad>
+      <h2>Pokedex List #{pokedexId}</h2>
       {props.data?.map((item,index) => {
         return <Addpokemon
           key={index}
@@ -24,7 +26,7 @@ function Pokemons(props) {
           button={() => addUserPoke(props,item.cards.id)}
         ></Addpokemon>;
       })}
-    </>
+    </ModelIpad>
   );
 }
 const mapStateToProps = (state) => {
