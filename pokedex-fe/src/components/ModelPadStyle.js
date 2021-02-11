@@ -63,7 +63,7 @@ export const ItemBlock = styled.div`
   border-style: none;
 `;
 
-export const SearchFrom = styled.input`
+export const SearchForm = styled.input`
   border-radius: 0.5rem;
   border-style: solid;
   border-width: 2px;
