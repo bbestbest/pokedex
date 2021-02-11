@@ -1,11 +1,11 @@
 import React from "react";
-import { Container, Ipad, UserStatus } from "./ModelPadStyle";
+import { Container, Ipad, UserStatusStyle } from "./ModelPadStyle";
 
 function ModelIpad({ children }) {
   return (
     <Container>
       <Ipad>
-        <UserStatus>{children}</UserStatus>
+        <UserStatusStyle>{children}</UserStatusStyle>
       </Ipad>
     </Container>
   );

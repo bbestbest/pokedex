@@ -21,7 +21,7 @@ export const Ipad = styled.div`
   flex-direction: column;
 `;
 
-export const UserStatus = styled.div`
+export const UserStatusStyle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
