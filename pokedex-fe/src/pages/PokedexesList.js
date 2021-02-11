@@ -5,6 +5,7 @@ import { useParams, useHistory } from "react-router-dom";
 import Addpokemon from "../components/Addpokemon";
 import { checkUserList } from "../Reducer/UserAction";
 import ModelIpad from '../components/ModelIpad'
+import { ButtonBack } from '../components/ModelPadStyle'
 
 function PokedexesList(props) {
   React.useEffect(() => {
@@ -14,7 +15,7 @@ function PokedexesList(props) {
   const history = useHistory();
   return (
     <ModelIpad>
-      <h3 onClick={() => history.push("/pokedexes")}>Back</h3>
+      <ButtonBack onClick={() => history.push("/pokedexes")}>Back</ButtonBack>
       <h2>PokedexesList #{id}</h2>
       {props.dataUserList !== undefined &&
       props.dataUserList[id - 1]?.username === props.dataUser ? (

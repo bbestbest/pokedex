@@ -137,3 +137,15 @@ export const TextBackground = styled.div`
   justify-content: center;
   padding: 0 2rem;
 `;
+
+export const ButtonBack = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-top: 1rem ;
+  background-color: transparent;
+  color: red;
+  border: none;
+  cursor: pointer;
+`;

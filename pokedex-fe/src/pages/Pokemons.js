@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { loadPokedexList } from '../Reducer/PokedexAction'
 import { addUserPoke } from '../Reducer/UserAction'
 import ModelIpad from '../components/ModelIpad'
-import { SearchForm } from "../components/ModelPadStyle";
+import { SearchForm, ButtonBack } from "../components/ModelPadStyle";
 
 function Pokemons(props) {
   const { pokedexId } = useParams();
@@ -35,7 +35,7 @@ function Pokemons(props) {
 
   return (
     <ModelIpad>
-      <h3 onClick={() => history.push(`/pokedexesList/${pokedexId}`)}>Back</h3>
+      <ButtonBack onClick={() => history.push(`/pokedexesList/${pokedexId}`)}>Back</ButtonBack>
       <h2> Pokedex Add Pokemon #{pokedexId}</h2>
       <SearchForm onChange={handleOnSearchChange} />
       {!search.value && filterSearch.length >= 0
