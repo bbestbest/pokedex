@@ -59,7 +59,7 @@ function Login(props) {
         ></InputForm>
         <h3>Password</h3>
         <InputForm
-          placeholder="username . . ."
+          placeholder="password . . ."
           type="password"
           id="password"
           name="password"
