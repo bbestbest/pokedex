@@ -55,6 +55,7 @@ function Login(props) {
           id="username"
           name="username"
           onChange={handleUsernameOnChange}
+          onKeyDown={handleOnEnter}
         ></InputForm>
         <h3>Password</h3>
         <InputForm
@@ -63,6 +64,7 @@ function Login(props) {
           id="password"
           name="password"
           onChange={handlePasswordOnChange}
+          onKeyDown={handleOnEnter}
         ></InputForm>
         <Button onClick={handleOnClick}>Sign In</Button>
         <Link to={`/signup`}>Don't have an account?</Link>
