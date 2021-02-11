@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { register } from "../Reducer/UserAction";
@@ -11,6 +11,13 @@ function SignUp(props) {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
+  useEffect(() => {
+    if (props.state.UserReducer.type === "REGISTERED") {
+      history.push("/login");
+      props.dispatch({ type: "" });
+    }
+  });
+
   const handleUsernameOnChange = (event) => {
     setUsername(event.target.value);
   };
@@ -22,7 +29,6 @@ function SignUp(props) {
   const handleOnSignUp = () => {
     try {
       register({ username, password }, props);
-      history.push("/login");
     } catch (error) {
       console.log(error);
     }
@@ -66,5 +72,8 @@ function SignUp(props) {
     </>
   );
 }
+const mapState = (state) => {
+  return { state: state };
+};
 
-export default connect(null)(SignUp);
+export default connect(mapState)(SignUp);
