@@ -9,7 +9,7 @@ import {
 function AddPokemon(props, { children }) {
   return (
     <BoxData>
-      <BoxImage image={props.image} />
+      <BoxImage src={props.image} />
       <BoxTextPokemon>
         <div>{props.name}</div>
         <div>{props.type}</div>
