@@ -11,7 +11,6 @@ function Pokemons(props) {
   const [search, setSearch] = useState({ value: "" });
   const [filterSearch, setFilterSearch] = useState([]);
 
-  console.log(props.state);
   if (props.message === undefined) {
     loadPokedexList(props);
   }
