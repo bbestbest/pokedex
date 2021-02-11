@@ -41,8 +41,11 @@ export const UserList = styled.div`
   width: auto;
   height: 80%;
   margin: 5%;
-  overflow: hidden;
+  overflow: auto;
   color: #ff0105;
+  ::-webkit-scrollbar { 
+    display: none; 
+  }
 `;
 
 export const PokemonList = styled.div`
@@ -50,9 +53,12 @@ export const PokemonList = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow: hidden;
+  overflow: auto;
   width: 90%;
   height: 100%;
+  ::-webkit-scrollbar { 
+    display: none; 
+  }
 `
 
 export const InputForm = styled.input`
