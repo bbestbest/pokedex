@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { checkUserList } from "../Reducer/UserAction";
 import UserList from "../components/UserPokedexList";
 import { connect } from "react-redux";
 import { TextBackground } from "../components/ModelPadStyle";
