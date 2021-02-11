@@ -23,7 +23,10 @@ export function* registerUser(action) {
 }
 
 export function* addPokemons(action) {
-  yield put({ type: "ADD_USER_LIST", pokemon_id: action.pokemon_id });
-  const stateUser = yield select(getStateUser);
-  yield UpdatePokemons("user", stateUser);
+  const stateUsers = yield select(getStateUser);
+  if (!stateUsers.pokemon_id.includes(action.pokemon_id)) {
+    yield put({ type: "ADD_USER_LIST", pokemon_id: action.pokemon_id });
+    const newStateUser = yield select(getStateUser);
+    yield UpdatePokemons("user", newStateUser);
+  }
 }
