@@ -1,11 +1,18 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
-import { checkUserList } from "../Reducer/UserAction";
+import React, { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import UserList from "../components/UserPokedexList";
 import { connect } from "react-redux";
 import { TextBackground } from "../components/ModelPadStyle";
 
 function Pokedexes(props) {
+  const history = useHistory();
+
+  useEffect(() => {
+    if (props.state === undefined) {
+      history.push("/login");
+    }
+  });
+
   return (
     <>
       <UserList>

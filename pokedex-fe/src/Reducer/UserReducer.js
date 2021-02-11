@@ -9,9 +9,7 @@ export default function UserReducer(state = [], action) {
         pokemon_id: action.pokemon_id,
       };
     case "ADD_USER_LIST":
-      return { ...state, 
-        pokemon_id: [...state.pokemon_id, action.pokemon_id] 
-      };
+      return { ...state, pokemon_id: [...state.pokemon_id, action.pokemon_id] };
     default:
       return state;
   }

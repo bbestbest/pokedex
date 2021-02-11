@@ -10,7 +10,8 @@ module.exports = async function LoginFunc(
     username: request.username,
   }).then((response: any) => response);
   if (
-    user.username !== undefined &&
+    user !== undefined &&
+    user !== null &&
     request.password !== undefined &&
     request.password !== null
   ) {
@@ -28,4 +29,5 @@ module.exports = async function LoginFunc(
         return { status: "error", token: undefined };
     }
   }
+  return { status: "error", token: undefined };
 };
