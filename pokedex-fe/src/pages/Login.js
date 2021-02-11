@@ -11,6 +11,12 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const history = useHistory();
 
+  useEffect(() => {
+    if (props.state.UserReducer._id !== undefined) {
+      history.push("/pokedexes");
+    }
+  });
+
   const handleUsernameOnChange = (event) => {
     setUsername(event.target.value);
   };
@@ -23,7 +29,6 @@ function Login(props) {
     try {
       login({ username, password }, props);
       checkUserList(props);
-      history.push("/pokedexes");
     } catch (error) {
       console.log(error);
     }
@@ -68,4 +73,8 @@ function Login(props) {
   );
 }
 
-export default connect(null)(Login);
+const mapState = (state) => {
+  return { state: state };
+};
+
+export default connect(mapState)(Login);
